@@ -19,7 +19,8 @@ pipeline {
                     sh "yq -i '.authService.tag = "qwerty"' ./public/values.yaml"
                     sh "yq -i '.accountingService.tag = "qwerty"' ./public/values.yaml"
                     sh "git add ."
-                    sh "git commit -m 'updated values'"
+                    sh "git commit -m "updated values""
+                    sh "git push origin main"
                     withCredentials([usernamePassword(credentialsId: 'ayushi', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                         sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/ayushi212001/register.git')
                     }
