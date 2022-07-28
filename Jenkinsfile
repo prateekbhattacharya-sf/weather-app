@@ -6,27 +6,20 @@ pipeline {
                 git branch: 'test', credentialsId: 'ayushi', url: 'https://github.com/ayushi212001/weather-app.git'
             }
         }
-        stage('yaml-update'){
-            steps{
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'testdir42']], userRemoteConfigs: [[credentialsId: 'ayushi', url: 'https://github.com/ayushi212001/register.git']]])
-            }
-        }
-        stage('git-push'){
+        stage('helm-clone'){
             steps{
                 script{
-                    sh "sudo snap install yq"
-                    sh "yq -i '.authService.tag = qwerty' testdir42/public/values.yaml"
-                    sh "yq -i '.accountingService.tag = qwerty' testdir42/public/values.yaml"
-                    sh "git add ."
-                    sh "git status"
-                    sh "git commit -v"
-                    withCredentials([usernamePassword(credentialsId: 'ayushi', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-                        sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/ayushi212001/register.git')
-                    }
-                    
-                }
+                    git branch: 'main', credentialsId: 'ayushi', url: 'https://github.com/sourcefuse/register.git'
+                    sh "cd ./public"
+                    def text = readFile file: "values.yaml"
+                       text = text.replaceAll("%tag%", "v2")
+                    sh "git add . -m "Update app image tag to v2""
+                    sh "git push origin main"
+
+                }    
             }
-        }    
+        }
+        
     }
 
 } 
