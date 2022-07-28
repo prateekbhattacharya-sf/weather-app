@@ -15,8 +15,8 @@ pipeline {
             steps{
                 script{
                     sh "sudo snap install yq"
-                    sh "yq -i '.authService.tag = qwerty' values.yaml"
-                    sh "yq -i '.accountingService.tag = qwerty' values.yaml"
+                    sh "yq -i '.authService.tag = qwerty' testdir42/public/values.yaml"
+                    sh "yq -i '.accountingService.tag = qwerty' testdir42/public/values.yaml"
                     sh "git add ."
                     sh "git status"
                     sh "git commit -v"
