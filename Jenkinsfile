@@ -9,7 +9,7 @@ pipeline {
         stage('helm-clone'){
             steps{
                 script{
-                    git branch: 'main', credentialsId: 'ayushi', url: 'https://github.com/sourcefuse/register.git'
+                    git branch: 'main', credentialsId: 'ayushi', url: 'https://github.com/ayushi212001/register.git'
                     sh "cd ./public"
                     def text = readFile file: "values.yaml"
                        text = text.replaceAll("%tag%", "v2")
