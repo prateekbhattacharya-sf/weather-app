@@ -8,9 +8,11 @@ pipeline {
         }
         stage('git-push'){
             steps{
-                git add .
-                git commit -m "updated files"
-                git push origin master
+                script{
+                    sh git add .
+                    sh git commit -m "updated files"
+                    sh git push origin master
+                }
             }
         }
     } 
