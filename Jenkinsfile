@@ -9,9 +9,9 @@ pipeline {
         stage('git-push'){
             steps{
                 script{
-                    sh git add .
-                    sh git commit -m "updated files"
-                    sh git push origin master
+                    withCredentials([usernamePassword(credentialsId: 'ayushi', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+                        sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/ayushi212001/weather-app.git')
+                    }
                 }
             }
         }
