@@ -6,7 +6,7 @@ pipeline {
                 git branch: 'test', credentialsId: 'ayushi', url: 'https://github.com/ayushi212001/weather-app.git'
             }
         }
-        stage(yaml-update){
+        stage('yaml-update'){
             steps{
                 git branch: 'main', credentialsId: 'ayushi', url: 'https://github.com/ayushi212001/register.git'
                 
