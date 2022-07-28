@@ -10,7 +10,7 @@ pipeline {
             steps{
                 script{
                     git branch: 'main', credentialsId: 'ayushi', url: 'https://github.com/ayushi212001/register.git'
-                    sh "cd ./public"
+                    sh "cd public"
                     def text = readFile file: "values.yaml"
                        text = text.replaceAll("%tag%", "v2")
                     sh "git add . -m "Update app image tag to v2""
