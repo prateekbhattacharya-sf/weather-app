@@ -16,8 +16,8 @@ pipeline {
             steps{
                 script{
                     sh "sudo snap install yq"
-                    "yq -i '.authService.tag = qwerty' ./public/values.yaml"
-                    "yq -i '.accountingService.tag = qwerty' ./public/values.yaml"
+                    sh "yq -i '.authService.tag = qwerty' ./public/values.yaml"
+                    sh "yq -i '.accountingService.tag = qwerty' ./public/values.yaml"
                     sh "git add ."
                     sh "git commit -v"
                     withCredentials([usernamePassword(credentialsId: 'ayushi', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
