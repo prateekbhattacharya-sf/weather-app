@@ -18,9 +18,9 @@ pipeline {
                         sh "pwd"
                         sh "sudo yq -i '.accountingService.tag = 'v2''"
                         sh "sudo yq -i '.authService.tag = 'v2''"
-                        sh "git add ."
-                        sh "git commit - "updated-values.yaml""
-                        sh "git push origin main"
+                      sh "git add ."
+                      sh "git commit - "updated-values.yaml""
+                      sh "git push origin main"
 
                       }
 
