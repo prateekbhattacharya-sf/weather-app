@@ -9,7 +9,6 @@ pipeline {
         stage('helm-clone'){
             steps{
                 script{
-                    sh "mkdir /var/lib/jenkins/workspace/test42/biz-book-helm"
                     sh "pwd"
                     sh "sudo snap install yq" 
                     dir('biz-book-helm') {
