@@ -15,6 +15,7 @@ pipeline {
                       sh "pwd"
                       git branch: 'main', credentialsId: 'ayushi', url: 'https://github.com/ayushi212001/register.git'
                       dir('public/values.yaml') {
+                        sh "pwd"
                         sh "sudo yq -i '.accountingService.tag = 'v2''"
                         sh "sudo yq -i '.authService.tag = 'v2''"
                         sh "git add ."
