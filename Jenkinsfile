@@ -16,11 +16,11 @@ pipeline {
                       sh "pwd"
                       git branch: 'main', credentialsId: 'ayushi', url: 'https://github.com/ayushi212001/register.git'
                       dir('public') {
-                        sh def text = readFile file: "values.yaml"
-                        text = text.replaceAll("%tag%", "v2")
-                      sh "git add ."
-                      sh "git commit - "updated-values.yaml""
-                      sh "git push origin main"
+                        yq -i '.accountingService.tag = 'v2'' values.yaml
+                        yq -i '.authService.tag = 'v2'' values.yaml
+                        sh "git add ."
+                        sh "git commit - "updated-values.yaml""
+                        sh "git push origin main"
 
                       }
 
