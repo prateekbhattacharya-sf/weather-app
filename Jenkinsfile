@@ -13,7 +13,7 @@ pipeline {
                     sh "sudo snap install yq" 
                     dir('biz-book-helm') {
                       sh "pwd"
-                      git branch: 'main', credentialsId: 'ayushi', url: 'https://github.com/ayushi212001/register.git'
+                      sh 'git clone --recursive -b $GIT_BRANCH https://github.com/ayushi212001/register.git'
                       dir('public/values.yaml') {
                         sh "pwd"
                         sh "sudo yq -i '.accountingService.tag = 'v2''"
