@@ -14,9 +14,9 @@ pipeline {
                     dir('biz-book-helm') {
                       sh "pwd"
                       git branch: 'main', credentialsId: 'ayushi', url: 'https://github.com/ayushi212001/register.git'
-                      dir('public') {
-                        sh "sudo yq -i '.accountingService.tag = 'v2'' values.yaml"
-                        sh "sudo yq -i '.authService.tag = 'v2'' values.yaml"
+                      dir('public/values.yaml') {
+                        sh "sudo yq -i '.accountingService.tag = 'v2''"
+                        sh "sudo yq -i '.authService.tag = 'v2''"
                         sh "git add ."
                         sh "git commit - "updated-values.yaml""
                         sh "git push origin main"
