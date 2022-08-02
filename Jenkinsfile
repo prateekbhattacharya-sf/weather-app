@@ -12,7 +12,7 @@ pipeline {
                     sh "pwd"
                     sh "sudo snap install yq" 
                     dir('biz-book-helm') {
-                      deletedir('public@temp')  
+                      deleteDir('public@temp')  
                       sh "pwd"
                       git branch: 'main', credentialsId: 'ayushi', url: 'https://github.com/ayushi212001/register.git'
                       dir('public') {
