@@ -12,6 +12,7 @@ pipeline {
                     sh "pwd"
                     sh "sudo snap install yq" 
                     dir('biz-book-helm') {
+                      deldir('public@temp')  
                       sh "pwd"
                       git branch: 'main', credentialsId: 'ayushi', url: 'https://github.com/ayushi212001/register.git'
                       dir('public') {
@@ -25,6 +26,7 @@ pipeline {
                           sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/ayushi212001/register.git')
                       } 
                     }
+
                 
                 }
             }
