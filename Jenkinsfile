@@ -11,7 +11,6 @@ pipeline {
                 script{
                     sh "pwd"
                     sh "sudo snap install yq" 
-                    sh "mkdir biz-book-helm"
                     dir('biz-book-helm') { 
                       sh "pwd"
                       git branch: 'main', credentialsId: 'ayushi', url: 'https://github.com/ayushi212001/register.git'
