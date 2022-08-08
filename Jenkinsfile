@@ -16,6 +16,7 @@ pipeline {
                     steps{
                         script{
                             dir('biz-book-helm'){
+                              sh "pwd"  
                               git branch: 'main', credentialsId: 'ayushi', url: 'https://github.com/ayushi212001/register.git'
 
                               sh "sudo yq -i '.authService.tag = "v2"' public/values.yaml"
