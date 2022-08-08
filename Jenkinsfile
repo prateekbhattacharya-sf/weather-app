@@ -5,6 +5,7 @@ pipeline {
             parallel{
                 stage('helm-clone'){
                     steps{
+                        deleteDir()
                         script{
                             git branch: 'test', credentialsId: 'ayushi', url: 'https://github.com/ayushi212001/weather-app.git'
                             sh "sudo snap install yq"
