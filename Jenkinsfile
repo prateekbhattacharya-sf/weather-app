@@ -15,6 +15,9 @@ pipeline {
                 stage('update-values'){
                     steps{
                         script{
+                            deleteDir('bizbook-helm')
+                            deleteDir('bizbook-helm@temp')
+                            deleteDir('biz-book-helm@tmp')
                             dir('biz-book-helm'){
                               git branch: 'main', credentialsId: 'ayushi', url: 'https://github.com/ayushi212001/register.git'
 
