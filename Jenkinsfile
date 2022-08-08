@@ -6,7 +6,7 @@ pipeline {
                 stage('main-clone'){
                     steps{
                         script{
-                            git branch: 'main', credentialsId: 'ayushi', url: 'https://github.com/ayushi212001/weather-app.git'
+                            git branch: 'test', credentialsId: 'ayushi', url: 'https://github.com/ayushi212001/weather-app.git'
                             
                         }
                     }
